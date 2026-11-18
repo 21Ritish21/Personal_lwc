@@ -1,28 +1,5 @@
 <template>
-    <lightning-card title="First Component">
-        <div class="style1">Hello, {currentEmp.name}!</div>
-        <div>ID: {currentEmp.id} | Salary: {currentEmp.salary}</div>
-
-        <lightning-button label="Change User Name" variant="success" onclick={changeName}></lightning-button>
-        <lightning-button label="Reset" variant="neutral" onclick={resetName}></lightning-button>
-
-        <div class="slds-var-p-around_medium">
-            <lightning-input
-                type="number"
-                label="Expected Salary"
-                value={expectedSalary}
-                onchange={handleSalaryChange}>
-            </lightning-input>
-
-            <lightning-button
-                label="Submit"
-                variant="brand"
-                onclick={handleSubmit}>
-            </lightning-button>
-
-            <template lwc:if={isSubmitted}>
-                <p>Your expected salary is {submittedSalary}</p>
-            </template>
-        </div>
+    <lightning-card title="Hello">
+        <p class="style1">Welcome to LWC</p>
     </lightning-card>
 </template>
