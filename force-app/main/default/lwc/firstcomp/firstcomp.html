@@ -1,5 +1,11 @@
 <template>
     <lightning-card title="First Component">
         <div class="style1">Hello, {userName}!</div>
+
+        <lightning-button
+            label="Change User Name"
+            variant="success"
+            onclick={changeName}>
+        </lightning-button>
     </lightning-card>
 </template>
