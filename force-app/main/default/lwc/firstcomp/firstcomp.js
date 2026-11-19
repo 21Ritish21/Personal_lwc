@@ -1,38 +1,23 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, track } from 'lwc';
 
 export default class FirstComp extends LightningElement {
-    employees = [
-        { id: 101, name: 'Anadi Sharma', salary: 30000 },
-        { id: 102, name: 'Bhavna', salary: 35000 },
-        { id: 103, name: 'Ritish Mahajan', salary: 40000 },
-        { id: 104, name: 'Snehal', salary: 45000 }
-    ];
+    userName = 'Anadi Sharma';
 
-    currentIndex = 0;
+    @track emp = {
+        id: '',
+        name: '',
+        salary: ''
+    };
 
-    expectedSalary;
-    submittedSalary;
-    isSubmitted = false;
+    handleInput(e) {
+        let { name, value } = e.target;
+        this.emp[name] = value;
 
-    get currentEmp() {
-        return this.employees[this.currentIndex];
+        console.log(JSON.stringify(this.emp));
     }
 
     changeName() {
-        this.currentIndex = (this.currentIndex + 1) % this.employees.length;
-    }
-
-    resetName() {
-        this.currentIndex = 0;
-    }
-
-    handleSalaryChange(event) {
-        this.expectedSalary = event.target.value;
-        this.isSubmitted = false;
-    }
-
-    handleSubmit() {
-        this.submittedSalary = this.expectedSalary;
-        this.isSubmitted = true;
+        this.emp.name = 'Bhavna';
+        console.log(JSON.stringify(this.emp));
     }
 }

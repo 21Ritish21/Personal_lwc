@@ -1,28 +1,39 @@
 <template>
-    <lightning-card title="First Component">
-        <div class="style1">Hello, {currentEmp.name}!</div>
-        <div>ID: {currentEmp.id} | Salary: {currentEmp.salary}</div>
-
-        <lightning-button label="Change User Name" variant="success" onclick={changeName}></lightning-button>
-        <lightning-button label="Reset" variant="neutral" onclick={resetName}></lightning-button>
-
+    <lightning-card title="Employee Form">
         <div class="slds-var-p-around_medium">
             <lightning-input
+                label="ID"
+                name="id"
+                value={emp.id}
+                onchange={handleInput}>
+            </lightning-input>
+
+            <lightning-input
+                label="Name"
+                name="name"
+                value={emp.name}
+                onchange={handleInput}>
+            </lightning-input>
+
+            <lightning-input
                 type="number"
-                label="Expected Salary"
-                value={expectedSalary}
-                onchange={handleSalaryChange}>
+                label="Salary"
+                name="salary"
+                value={emp.salary}
+                onchange={handleInput}>
             </lightning-input>
 
             <lightning-button
-                label="Submit"
-                variant="brand"
-                onclick={handleSubmit}>
+                label="Change User Name"
+                variant="success"
+                onclick={changeName}>
             </lightning-button>
 
-            <template lwc:if={isSubmitted}>
-                <p>Your expected salary is {submittedSalary}</p>
-            </template>
+            <div class="style1">
+                <p>ID: {emp.id}</p>
+                <p>Name: {emp.name}</p>
+                <p>Salary: {emp.salary}</p>
+            </div>
         </div>
     </lightning-card>
 </template>
