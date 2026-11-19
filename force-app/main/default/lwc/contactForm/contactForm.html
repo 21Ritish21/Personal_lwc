@@ -48,9 +48,10 @@
                 onclick={handleSubmit}>
             </lightning-button>
 
-          <lightning-button label="Submit" variant="brand" onclick={handleSubmit}></lightning-button>
-
-          <div class="message">{message}</div>
+            <template lwc:if={isSubmitted}>
+                <div class="message">{message}</div>
+            </template>
+            <p lwc:else>Please fill the form and click Submit.</p>
         </div>
     </lightning-card>
 </template>

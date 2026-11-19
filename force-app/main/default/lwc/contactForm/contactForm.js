@@ -10,6 +10,7 @@ export default class ContactForm extends LightningElement {
     };
 
     message = '';
+    isSubmitted = false;
 
     genderOptions = [
         { label: 'Male', value: 'Male' },
@@ -31,6 +32,7 @@ export default class ContactForm extends LightningElement {
         }
 
         this.message = 'Welcome ' + title + ' ' + this.contact.name;
+        this.isSubmitted = true;
 
         console.log(this.message);
         console.log(JSON.stringify(this.contact));
