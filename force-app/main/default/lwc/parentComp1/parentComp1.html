@@ -1,5 +1,9 @@
 <template>
-    <c-child-comp1 name="Child1"></c-child-comp1>
-    <c-child-comp1 name="Child2"></c-child-comp1>
-    <c-child-comp1 name="Child3"></c-child-comp1>
+    <c-child-comp1 name="Child1" onsendmessage={getMessage}></c-child-comp1>
+    <c-child-comp1 name="Child2" onsendmessage={getMessage}></c-child-comp1>
+    <c-child-comp1 name="Child3" onsendmessage={getMessage}></c-child-comp1>
+// listens
+    <lightning-card title="Message from child">
+        <p>{val}</p>
+    </lightning-card>
 </template>
