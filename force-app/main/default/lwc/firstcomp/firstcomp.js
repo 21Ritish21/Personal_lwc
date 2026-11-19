@@ -1,23 +1,10 @@
-import { LightningElement, track } from 'lwc';
+import { LightningElement } from 'lwc';
 
 export default class FirstComp extends LightningElement {
-    userName = 'Anadi Sharma';
-
-    @track emp = {
-        id: '',
-        name: '',
-        salary: ''
-    };
-
-    handleInput(e) {
-        let { name, value } = e.target;
-        this.emp[name] = value;
-
-        console.log(JSON.stringify(this.emp));
-    }
-
-    changeName() {
-        this.emp.name = 'Bhavna';
-        console.log(JSON.stringify(this.emp));
-    }
+    employees = [
+        { id: 101, name: 'Anadi Sharma', salary: 30000 },
+        { id: 102, name: 'Bhavna', salary: 35000 },
+        { id: 103, name: 'Ritish Mahajan', salary: 40000 },
+        { id: 104, name: 'Snehal', salary: 45000 }
+    ];
 }
