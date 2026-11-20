@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="List">
+        <div class="slds-var-p-around_medium">
+            <ul>
+                <template for:each={employees} for:item="e">
+                    <li key={e.id} class="style1">
+                        {e.id} - {e.name} - Salary: {e.salary}
+                    </li>
+                </template>
+            </ul>
+        </div>
+    </lightning-card>
+</template>
