@@ -3,11 +3,18 @@ import getAccountByName from '@salesforce/apex/AccountController.getAccountByNam
 
 export default class ApexComp extends LightningElement {
     searchName = 'Uni';
+    accounts = null;
+    err = null;
 
     @wire(getAccountByName, { name: '$searchName' })
-    accounts;
-
-    renderedCallback() {
-        console.log(JSON.stringify(this.accounts));
+    getAccounts({ data, error }) {
+        if (data) {
+            this.accounts = data;
+            this.err = null;
+        } else if (error) {
+            this.err = error;
+            this.accounts = null;
+            console.log(JSON.stringify(error));
+        }
     }
 }

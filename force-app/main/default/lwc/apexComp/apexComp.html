@@ -1,13 +1,23 @@
 <template>
     <lightning-card title="Accounts from Apex">
         <div class="slds-var-p-around_medium">
-            <template lwc:if={accounts.data}>
+
+            <template lwc:if={accounts}>
                 <ul>
-                    <template for:each={accounts.data} for:item="acc">
+                    <template for:each={accounts} for:item="acc">
                         <li key={acc.Id}>{acc.Name} - {acc.Phone}</li>
                     </template>
                 </ul>
             </template>
+
+            <template lwc:elseif={err}>
+                <p>Something went wrong. Check the console.</p>
+            </template>
+
+            <template lwc:else>
+                <p>Loading...</p>
+            </template>
+
         </div>
     </lightning-card>
 </template>
