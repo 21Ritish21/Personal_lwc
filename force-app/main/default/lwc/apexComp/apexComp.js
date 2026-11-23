@@ -1,8 +1,10 @@
 import { LightningElement, wire } from 'lwc';
-import getAllAccounts from '@salesforce/apex/AccountController.getAllAccounts';
+import getAccountByName from '@salesforce/apex/AccountController.getAccountByName';
 
 export default class ApexComp extends LightningElement {
-    @wire(getAllAccounts)
+    searchName = 'Uni';
+
+    @wire(getAccountByName, { name: '$searchName' })
     accounts;
 
     renderedCallback() {
