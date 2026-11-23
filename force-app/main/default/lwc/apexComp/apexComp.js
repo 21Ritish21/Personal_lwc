@@ -1,20 +1,19 @@
-import { LightningElement, wire } from 'lwc';
-import getAccountByName from '@salesforce/apex/AccountController.getAccountByName';
+import { LightningElement } from 'lwc';
+import getAllAccounts from '@salesforce/apex/AccountController.getAllAccounts';
 
 export default class ApexComp extends LightningElement {
-    searchName = 'Uni';
-    accounts = null;
-    err = null;
+    accounts = [];
 
-    @wire(getAccountByName, { name: '$searchName' })
-    getAccounts({ data, error }) {
-        if (data) {
-            this.accounts = data;
-            this.err = null;
-        } else if (error) {
-            this.err = error;
-            this.accounts = null;
-            console.log(JSON.stringify(error));
-        }
+    getAccounts() {      // BUTTON CLICK
+        // JS PROMISE - RESOLVE, REJECT
+        getAllAccounts().then(res => {
+            this.accounts = res;
+        }).catch(err => {
+            console.log(JSON.stringify(err));
+        });
     }
+
+    // connectedCallback(){
+    //     this.getAccounts();
+    // }
 }
