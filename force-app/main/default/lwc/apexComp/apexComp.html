@@ -1,11 +1,8 @@
 <template>
-    <lightning-card title="Accounts from Apex">
+    <lightning-card title="Search Accounts">
         <div class="slds-var-p-around_medium">
-            <lightning-button label="Get Accounts" variant="brand" onclick={getAccounts}></lightning-button>
-
-            <template lwc:if={err}>
-                <p>Something went wrong. Check the console.</p>
-            </template>
+            <lightning-input label="Account name" onchange={handleChange}></lightning-input>
+            <lightning-button label="Search" variant="brand" onclick={getAccounts}></lightning-button>
 
             <ul>
                 <template for:each={accounts} for:item="acc">
