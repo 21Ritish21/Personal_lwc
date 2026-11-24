@@ -30,4 +30,30 @@ public with sharing class AccountController {
             throw new AuraHandledException('Something went wrong. Contact your admin.');
         }
     }
+        @AuraEnabled
+    public static Account updateAccount(Id recordId, string name, string accountnumber) {
+        try {
+            Account ac = new Account(Id = recordId);
+            ac.Name = name;
+            ac.AccountNumber = accountnumber;
+            update ac;
+            return ac;
+        } catch (DmlException e) {
+            throw new AuraHandledException(e.getMessage());
+        } catch (Exception e) {
+            throw new AuraHandledException('Something went wrong. Contact your admin.');
+        }
+    }
+
+    @AuraEnabled
+    public static void deleteAccount(Id recordId) {
+        try {
+            Account ac = new Account(Id = recordId);
+            delete ac;
+        } catch (DmlException e) {
+            throw new AuraHandledException(e.getMessage());
+        } catch (Exception e) {
+            throw new AuraHandledException('Something went wrong. Contact your admin.');
+        }
+    }
 }
