@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="LDS Demo (getRecord)">
+        <template if:true={account.data}>
+            <div class="slds-p-around_medium">
+                <p><b>Name: </b>{name}</p>
+                <p><b>Phone: </b>{phone}</p>
+                <p><b>Industry: </b>{industry}</p>
+                <p><b>Type: </b>{type}</p>
+            </div>
+        </template>
+    </lightning-card>
+</template>
