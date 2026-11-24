@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title="Account Details">
+        <template if:true={account}>
+            <div class="slds-p-around_medium">
+                <p><b>Name: </b>{account.Name}</p>
+                <p><b>Type: </b>{account.Type}</p>
+                <p><b>Industry: </b>{account.Industry}</p>
+            </div>
+        </template>
+    </lightning-card>
+</template>

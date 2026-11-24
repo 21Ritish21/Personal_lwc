@@ -13,6 +13,12 @@ public with sharing class AccountController {
         return accounts;
     }
 
+    @AuraEnabled(cacheable=true)
+    public static Account getAccountById(Id recordId) {
+        Account ac = [select Id, Name, Type, Industry from Account where Id = :recordId];
+        return ac;
+    }
+
     @AuraEnabled
     public static List<Account> createAccount(string name, string accountnumber) {
         List<Account> accounts = null;
@@ -30,7 +36,8 @@ public with sharing class AccountController {
             throw new AuraHandledException('Something went wrong. Contact your admin.');
         }
     }
-        @AuraEnabled
+
+    @AuraEnabled
     public static Account updateAccount(Id recordId, string name, string accountnumber) {
         try {
             Account ac = new Account(Id = recordId);
