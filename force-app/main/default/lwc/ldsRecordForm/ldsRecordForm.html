@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="Record Form">
+        <lightning-record-form
+            object-api-name={objectApiName}
+            fields={fields}
+            mode="edit"
+            onsuccess={accountCreated}>
+        </lightning-record-form>
+    </lightning-card>
+</template>

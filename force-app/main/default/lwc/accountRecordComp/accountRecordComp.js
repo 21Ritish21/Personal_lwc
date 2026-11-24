@@ -1,15 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>68.0</apiVersion>
-    <isExposed>true</isExposed>
-    <targets>
-        <target>lightning__RecordPage</target>
-    </targets>
-    <targetConfigs>
-        <targetConfig targets="lightning__RecordPage">
-            <objects>
-                <object>Account</object>
-            </objects>
-        </targetConfig>
-    </targetConfigs>
-</LightningComponentBundle>
+import { LightningElement, api, wire } from 'lwc';
+import getAccountById from '@salesforce/apex/AccountController.getAccountById';
+
+export default class AccountRecordComp extends LightningElement {
+    @api recordId;
+    account;
+    error;
+
+    @wire(getAccountById, { recordId: '$recordId' })
+    getAccount({ data, error }) {
+        if (data) {
+            this.account = data;
+            this.error = undefined;
+        } else if (error) {
+            this.error = error;
+            this.account = undefined;
+        }
+    }
+}
