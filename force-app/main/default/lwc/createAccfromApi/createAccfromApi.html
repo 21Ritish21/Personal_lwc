@@ -1,8 +1,24 @@
 <template>
-    <lightning-card title="Create Account Through API">
+    <lightning-card title="Account Industry Picklist">
         <div class="slds-var-p-around_medium">
-            <lightning-input label="Account Name" onchange={handleChange}></lightning-input>
-            <lightning-button label="Create" variant="brand" onclick={addAccount}></lightning-button>
+            <lightning-input
+                label="Account Name"
+                onchange={handleNameChange}>
+            </lightning-input>
+
+            <lightning-combobox
+                label="Industry"
+                placeholder="--None--"
+                options={industryOptions}
+                value={selectedIndustry}
+                onchange={handleChange}>
+            </lightning-combobox>
+
+            <lightning-button
+                label="Create Account"
+                variant="brand"
+                onclick={addAccount}>
+            </lightning-button>
         </div>
     </lightning-card>
 </template>
