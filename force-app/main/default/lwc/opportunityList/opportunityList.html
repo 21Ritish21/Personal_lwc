@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title="Opportunities">
+        <div class="slds-var-p-around_medium">
+            <ul>
+                <template for:each={opportunities} for:item="opp">
+                    <li key={opp.Id} class={opp.colourClass}>{opp.Name}</li>
+                </template>
+            </ul>
+        </div>
+    </lightning-card>
+</template>
