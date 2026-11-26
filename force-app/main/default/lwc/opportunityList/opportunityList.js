@@ -1,7 +1,7 @@
 import { LightningElement, wire } from 'lwc';
+import { NavigationMixin } from 'lightning/navigation';
 import getAllOpportunity from '@salesforce/apex/OpportunityController.getAllOpportunity';
-
-export default class OpportunityList extends LightningElement {
+export default class OpportunityList extends NavigationMixin(LightningElement) {
     opportunities = [];
     error;
 
@@ -26,4 +26,16 @@ export default class OpportunityList extends LightningElement {
             console.log(JSON.stringify(error));
         }
     }
+    handleSelect(event) {
+    const oppId = event.currentTarget.dataset.id;
+
+    this[NavigationMixin.Navigate]({
+        type: 'standard__recordPage',
+        attributes: {
+            objectApiName: 'Opportunity',
+            actionName: 'view',
+            recordId: oppId
+        }
+    });
+}
 }

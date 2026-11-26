@@ -3,7 +3,12 @@
         <div class="slds-var-p-around_medium">
             <ul>
                 <template for:each={opportunities} for:item="opp">
-                    <li key={opp.Id} class={opp.colourClass}>{opp.Name}</li>
+                    <li key={opp.Id}
+                        class={opp.colourClass}
+                        data-id={opp.Id}
+                        onclick={handleSelect}>
+                        {opp.Name}
+                    </li>
                 </template>
             </ul>
         </div>

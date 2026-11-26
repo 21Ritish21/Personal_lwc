@@ -7,3 +7,11 @@
 .amber {
     color: orange;
 }
+li {
+    cursor: pointer;
+}
+
+li:hover {
+    font-weight: bold;
+    text-decoration: underline;
+}
